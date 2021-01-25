@@ -144,7 +144,7 @@
         },
         "availabilitySetName": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "lucwvd2-avaliabilityset",
             "metadata": {
                 "description": "Optional. Creates an availability set with the given name and adds the VMs to it. Cannot be used in combination with availability zone nor scale set."
             }
@@ -172,7 +172,7 @@
         },
         "scaleSetName": {
             "type": "string",
-            "defaultValue": "",
+            "defaultValue": "lucwvd2-scaleset",
             "metadata": {
                 "description": "Optional. Creates a virtual machine scale set with the given name and adds the VMs to it. Cannot be used in combination with availability zone nor availability set."
             }
@@ -827,7 +827,7 @@
         {
             "type": "Microsoft.Compute/availabilitySets",
             "apiVersion": "2019-07-01",
-            "condition": "[not(empty(parameters('availabilitySetName')))]",
+            "condition": "false",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
             "name": "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummy13AvailabilitySet')]",
@@ -846,7 +846,7 @@
         {
             "type": "Microsoft.Compute/virtualMachineScaleSets",
             "apiVersion": "2019-07-01",
-            "condition": "[not(empty(parameters('scaleSetName')))]",
+            "condition": "false",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
             "name": "[if(not(empty(parameters('scaleSetName'))),parameters('scaleSetName'),'dummy11ScaleSet')]",
@@ -862,7 +862,7 @@
         {
             "type": "Microsoft.Compute/proximityPlacementGroups",
             "apiVersion": "2019-07-01",
-            "condition": "[not(empty(parameters('proximityPlacementGroupName')))]",
+            "condition": "false",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
             "name": "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy9ProximityGroup')]",
@@ -880,12 +880,6 @@
                 "count": "[length(variables('vmNames'))]"
             },
             "tags": "[parameters('tags')]",
-            "dependsOn": [
-                "nicLoop",
-                "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummy6AvailabilitySet')]",
-                "[if(not(empty(parameters('scaleSetName'))),parameters('scaleSetName'),'dummy7ScaleSet')]",
-                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy8ProximityGroup')]"
-            ],
             "zones": "[if(parameters('useAvailabilityZone'), array(variables('allZones').zones[copyIndex()]), json('null'))]",
             "plan": "[if(empty(parameters('plan')), json('null'),parameters('plan'))]",
             "properties": {
