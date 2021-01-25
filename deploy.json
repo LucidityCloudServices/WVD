@@ -830,7 +830,7 @@
             "condition": "false",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
-            "name": "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummy13AvailabilitySet')]",
+            "name": "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummyAvailabilitySet')]",
             "dependsOn": [
                 "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummyProximityGroup')]"
             ],
@@ -849,9 +849,9 @@
             "condition": "false",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
-            "name": "[if(not(empty(parameters('scaleSetName'))),parameters('scaleSetName'),'dummy11ScaleSet')]",
+            "name": "[if(not(empty(parameters('scaleSetName'))),parameters('scaleSetName'),'dummyScaleSet')]",
             "dependsOn": [
-                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy10ProximityGroup')]"
+                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummyProximityGroup')]"
             ],
             "properties": {
                 "platformFaultDomainCount": "[parameters('scaleSetFaultDomain')]",
@@ -865,7 +865,7 @@
             "condition": "false",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
-            "name": "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy9ProximityGroup')]",
+            "name": "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummyProximityGroup')]",
             "properties": {
                 "proximityPlacementGroupType": "[parameters('proximityPlacementGroupType')]"
             }
