@@ -830,9 +830,9 @@
             "condition": "[not(empty(parameters('availabilitySetName')))]",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
-            "name": "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummyAvailabilitySet')]",
+            "name": "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummy13AvailabilitySet')]",
             "dependsOn": [
-                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummyProximityGroup')]"
+                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy12ProximityGroup')]"
             ],
             "properties": {
                 "platformFaultDomainCount": "[parameters('availabilitySetFaultDomain')]",
@@ -849,9 +849,9 @@
             "condition": "[not(empty(parameters('scaleSetName')))]",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
-            "name": "[if(not(empty(parameters('scaleSetName'))),parameters('scaleSetName'),'dummyScaleSet')]",
+            "name": "[if(not(empty(parameters('scaleSetName'))),parameters('scaleSetName'),'dummy11ScaleSet')]",
             "dependsOn": [
-                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummyProximityGroup')]"
+                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy10ProximityGroup')]"
             ],
             "properties": {
                 "platformFaultDomainCount": "[parameters('scaleSetFaultDomain')]",
@@ -865,7 +865,7 @@
             "condition": "[not(empty(parameters('proximityPlacementGroupName')))]",
             "location": "[parameters('location')]",
             "tags": "[parameters('tags')]",
-            "name": "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummyProximityGroup')]",
+            "name": "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy9ProximityGroup')]",
             "properties": {
                 "proximityPlacementGroupType": "[parameters('proximityPlacementGroupType')]"
             }
@@ -882,9 +882,9 @@
             "tags": "[parameters('tags')]",
             "dependsOn": [
                 "nicLoop",
-                "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummyAvailabilitySet')]",
-                "[if(not(empty(parameters('scaleSetName'))),parameters('scaleSetName'),'dummyScaleSet')]",
-                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummyProximityGroup')]"
+                "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummy6AvailabilitySet')]",
+                "[if(not(empty(parameters('scaleSetName'))),parameters('scaleSetName'),'dummy7ScaleSet')]",
+                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy8ProximityGroup')]"
             ],
             "zones": "[if(parameters('useAvailabilityZone'), array(variables('allZones').zones[copyIndex()]), json('null'))]",
             "plan": "[if(empty(parameters('plan')), json('null'),parameters('plan'))]",
@@ -945,7 +945,7 @@
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
                         "enabled": "[parameters('enableBootDiagnostics')]",
-                        "storageUri": "[concat('https://', if(empty(variables('bootDiagnosticStorageAccountName')), 'dummy', variables('bootDiagnosticStorageAccountName')), '.blob.core.windows.net/')]"
+                        "storageUri": "[concat('https://', if(empty(variables('bootDiagnosticStorageAccountName')), 'dummy5', variables('bootDiagnosticStorageAccountName')), '.blob.core.windows.net/')]"
                     }
                 },
                 "availabilitySet": "[if(not(empty(parameters('availabilitySetName'))), json(concat('{\"id\":\"', resourceId('Microsoft.Compute/availabilitySets', parameters('availabilitySetName')),'\"}')), json('null'))]",
@@ -1031,10 +1031,10 @@
                         "typeHandlerVersion": "1.0",
                         "autoUpgradeMinorVersion": true,
                         "settings": {
-                            "workspaceId": "[if(empty(parameters('workspaceId')), 'dummy', reference(parameters('workspaceId'), '2015-11-01-preview').customerId)]"
+                            "workspaceId": "[if(empty(parameters('workspaceId')), 'dummy1', reference(parameters('workspaceId'), '2015-11-01-preview').customerId)]"
                         },
                         "protectedSettings": {
-                            "workspaceKey": "[if(empty(parameters('workspaceId')), 'dummy', listKeys(parameters('workspaceId'), '2015-11-01-preview').primarySharedKey)]"
+                            "workspaceKey": "[if(empty(parameters('workspaceId')), 'dummy2', listKeys(parameters('workspaceId'), '2015-11-01-preview').primarySharedKey)]"
                         }
                     }
                 },
@@ -1054,10 +1054,10 @@
                         "typeHandlerVersion": "1.7",
                         "autoUpgradeMinorVersion": true,
                         "settings": {
-                            "workspaceId": "[if(empty(parameters('workspaceId')), 'dummy', reference(parameters('workspaceId'), '2015-11-01-preview').customerId)]"
+                            "workspaceId": "[if(empty(parameters('workspaceId')), 'dummy3', reference(parameters('workspaceId'), '2015-11-01-preview').customerId)]"
                         },
                         "protectedSettings": {
-                            "workspaceKey": "[if(empty(parameters('workspaceId')), 'dummy', listKeys(parameters('workspaceId'), '2015-11-01-preview').primarySharedKey)]"
+                            "workspaceKey": "[if(empty(parameters('workspaceId')), 'dummy4', listKeys(parameters('workspaceId'), '2015-11-01-preview').primarySharedKey)]"
                         }
                     }
                 },
