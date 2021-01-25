@@ -832,7 +832,7 @@
             "tags": "[parameters('tags')]",
             "name": "[if(not(empty(parameters('availabilitySetName'))),parameters('availabilitySetName'),'dummy13AvailabilitySet')]",
             "dependsOn": [
-                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummy12ProximityGroup')]"
+                "[if(not(empty(parameters('proximityPlacementGroupName'))),parameters('proximityPlacementGroupName'),'dummyProximityGroup')]"
             ],
             "properties": {
                 "platformFaultDomainCount": "[parameters('availabilitySetFaultDomain')]",
